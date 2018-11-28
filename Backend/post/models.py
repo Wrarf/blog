@@ -5,7 +5,7 @@ from django.contrib.auth import get_user_model
 
 class Post(models.Model):
     title = models.CharField(max_length=70)
-    img = models.ImageField()
+    img = models.ImageField(upload_to='images/%Y/%m/')
     text = models.TextField()
     pub_date = models.DateTimeField(default=timezone.now)
 
