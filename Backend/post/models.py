@@ -4,18 +4,19 @@ from django.contrib.auth import get_user_model
 
 
 class Post(models.Model):
-	title = models.CharField()
-	img = models.ImageField()
-	text = models.TextField()
-	pub_date = models.DateField(auto_now_add=True)
+    title = models.CharField(max_length=70)
+    img = models.ImageField()
+    text = models.TextField()
+    pub_date = models.DateTimeField(default=timezone.now)
 
-	def __str__(self):
-   		return self.title
+    def __str__(self):
+        return self.title
 
 
 class Comment(models.Model):
-	text = models.TextField()
-	pub_date = models.DateTimeField(default=timezone.now)
-	user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
-	post = models.ForeignKey(Post, on_delete=models.CASCADE)
-	reply_to = models.ForeignKey('self', on_delete=models.CASCADE, blank=True, null=True)
+    text = models.TextField()
+    pub_date = models.DateTimeField(default=timezone.now)
+    user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
+    post = models.ForeignKey(Post, related_name='comments', on_delete=models.CASCADE)
+    reply_to = models.ForeignKey(
+        'self', related_name='replies', on_delete=models.CASCADE, blank=True, null=True)

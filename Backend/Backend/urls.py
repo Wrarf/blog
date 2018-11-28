@@ -15,15 +15,19 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from rest_framework import routers
-from auth import views
+from auth import views as auth_views
+from post import views as post_views
 from rest_framework_simplejwt.views import (
 	TokenObtainPairView,
 	TokenRefreshView,
+    TokenVerifyView
 )
 
 
 router = routers.DefaultRouter()
-router.register(r'users', views.UsersViewSet)
+router.register(r'users', auth_views.UsersViewSet)
+router.register(r'posts', post_views.PostsViewSet)
+router.register(r'comments', post_views.CommentsViewSet)
 
 urlpatterns = [
     url(r'^', include(router.urls)),
