@@ -25,7 +25,6 @@ class CommentSerializer(serializers.ModelSerializer):
 
 
 class PostSerializer(serializers.HyperlinkedModelSerializer):
-    #comments = CommentSerializer(many=True, read_only=True)
     comments = serializers.SerializerMethodField(method_name='get_original_comments')
 
     class Meta:

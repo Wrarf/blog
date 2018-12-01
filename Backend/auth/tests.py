@@ -28,12 +28,12 @@ class UsersTestCase(APITestCase):
     def test_get_user(self):
         """Ensure we can read user's informations with the API."""
         response = self.client.get('/users/1/', format='json')
-        user = get_user_model().objects.get(username='user1')
+        user = get_user_model().objects.first()
 
         self.assertEqual(response.data['username'], user.username)
 
     def test_password_hashing(self):
         """Ensure that the password is hashed."""
-        user = get_user_model().objects.get(username='user1')
+        user = get_user_model().objects.first()
 
         self.assertNotEqual(user.password, 'P455w0Rd')
