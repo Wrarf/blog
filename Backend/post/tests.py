@@ -1,5 +1,6 @@
 from rest_framework.test import APITestCase, APIClient
 from post.models import Post, Comment
+from django.contrib.auth import get_user_model
 import os
 
 
@@ -8,7 +9,13 @@ class PostTestCase(APITestCase):
 	@classmethod
 	def setUpTestData(cls):
 		'''Create a new post'''
+		admin = get_user_model().objects.create(
+			username='admin', password='4dm1n15tr4t0r', email='admin@admin.com')
+		admin.is_staff = True
+		admin.save()
+
 		client = APIClient()
+		client.force_authenticate(user=admin)
 		dirname = os.path.dirname(__file__)
 		with open(os.path.join(dirname, 'test_utils/test.png'), 'rb') as img:
 			post = {
@@ -28,5 +35,3 @@ class PostTestCase(APITestCase):
 		post = Post.objects.first()
 
 		self.assertEqual(response.data['title'], post.title)
-
-	#def test_post_comments(self):
