@@ -28,6 +28,7 @@ router = routers.DefaultRouter()
 router.register(r'users', auth_views.UsersViewSet)
 router.register(r'posts', post_views.PostsViewSet)
 router.register(r'comments', post_views.CommentsViewSet)
+router.register(r'previews', post_views.PostPreviewsViewSet)
 
 urlpatterns = [
     url(r'^', include(router.urls)),

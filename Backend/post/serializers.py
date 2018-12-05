@@ -35,3 +35,10 @@ class PostSerializer(serializers.HyperlinkedModelSerializer):
         '''Gets original comments (NOT replies).'''
         return CommentSerializer(
             obj.comments.filter(reply_to__isnull=True), many=True, read_only=True).data
+
+
+class PostPreviewsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Post
+        fields = ('pk', 'title', 'pub_date')
+

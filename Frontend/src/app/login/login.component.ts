@@ -28,7 +28,7 @@ export class LoginComponent {
             this.loginForm.value.username,
             tokens.access,
             tokens.refresh
-          )
+          );
         }
     );
   }
