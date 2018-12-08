@@ -1,0 +1,19 @@
+<h1>{{post?.title}}</h1>
+<p>{{post?.pub_date}}</p>
+<img src="{{post?.image}}">
+<p>{{post?.text}}</p>
+<h2>Comments:</h2>
+<ul>
+	<li *ngFor="let comment of post?.comments">
+		<h3>{{comment.user}}</h3>
+		<p>{{comment.text}}</p>
+		<p>{{comment.pub_date}}</p>
+		<ul>
+			<li *ngFor="let reply of comment.replies">
+				<h3>{{reply.user}}</h3>
+				<p>{{reply.text}}</p>
+				<p>{{reply.pub_date}}</p>
+			</li>
+		</ul>
+	</li>
+</ul>

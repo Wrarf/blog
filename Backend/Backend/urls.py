@@ -26,9 +26,9 @@ from rest_framework_simplejwt.views import (
 
 router = routers.DefaultRouter()
 router.register(r'users', auth_views.UsersViewSet)
-router.register(r'posts', post_views.PostsViewSet)
 router.register(r'comments', post_views.CommentsViewSet)
-router.register(r'previews', post_views.PostPreviewsViewSet)
+router.register(r'previews', post_views.PostPreviewsViewSet, base_name='previews')
+router.register(r'posts', post_views.PostsViewSet)
 
 urlpatterns = [
     url(r'^', include(router.urls)),

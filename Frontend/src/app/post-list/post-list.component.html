@@ -1,6 +1,8 @@
 <ul>
 	<li *ngFor='let preview of postPreviews'>
-		<h2>{{preview.title}}</h2>
-		{{preview.pubDate}}
+		<a routerLink='/post/{{preview.pk}}'>
+			<h2>{{preview.title}}</h2>
+			{{preview.pubDate}}
+		</a>
 	</li>
 </ul>

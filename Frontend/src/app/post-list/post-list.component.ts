@@ -22,5 +22,4 @@ export class PostListComponent implements OnInit {
   ngOnInit() {
     this.getPostPreview();
   }
-
 }

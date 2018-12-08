@@ -8,12 +8,14 @@ import { LoginComponent } from './login/login.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { PostListComponent } from './post-list/post-list.component';
+import { PostComponent } from './post/post.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    PostListComponent
+    PostListComponent,
+    PostComponent
   ],
   imports: [
     BrowserModule,
